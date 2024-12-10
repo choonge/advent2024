@@ -12,7 +12,7 @@ var answer1 = 0
 var answer2 = 0
 
 func main() {
-	file, _ := os.Open("input_test.txt")
+	file, _ := os.Open("input.txt")
 	scanner := bufio.NewScanner(file)
 
 	for i := 0; scanner.Scan(); i++ {
@@ -40,11 +40,7 @@ func main() {
 		}
 	}
 
-	// 10741447295096 too high
-	// 10741443549536 correct
 	fmt.Printf("Answer part 1: %d\n", answer1)
-
-	// 15916264547402 too low
 	fmt.Printf("Answer part 2: %d\n", answer2)
 }
 
@@ -59,8 +55,7 @@ func isValidPart2(numbers []int, index int, operator string, result int, expecte
 	case "*":
 		result *= numbers[index+1]
 	case "||":
-		x, _ := strconv.Atoi(fmt.Sprintf("%d%d", numbers[index], numbers[index+1]))
-		fmt.Printf("%d: %d||%d\n", index, numbers[index], numbers[index+1])
+		x, _ := strconv.Atoi(fmt.Sprintf("%d%d", result, numbers[index+1]))
 		result = x
 	}
 
